@@ -21,3 +21,54 @@ java -jar target/challenge_2021-0.0.1-SNAPSHOT.jar
 Alternatively, you can run the app without packaging it using -
 
 mvn spring-boot:run
+
+The app will start running at http://localhost:8080
+
+Explore Rest APIs
+The app defines following CRUD APIs.
+
+POST /topsecret
+
+POST /topsecret_split/{satellite_name}
+
+GET /topsecret_split
+
+Examples
+
+POST -> /topsecret
+{
+    "satellites": [
+        {
+            "name" : "kenobi",
+            "distance" : 100.0,
+            "message" : ["","este","es","un","mensaje"]
+        },
+        {
+            "name" : "skywalker",
+            "distance" : 115.5,
+            "message" : ["este","","un","mensaje"]
+        },
+        {
+            "name" : "sato",
+            "distance" : 142.7,
+            "message" : ["","","es","","mensaje"]
+        }
+    ]
+}
+
+POST -> /topsecret_split/kenobi
+{
+    "distance" : 142.7,
+    "message" : ["","","es","","mensaje"]
+}
+
+GET -> /topsecret_split
+
+Response 
+{
+    "position": {
+        "x": -487.4977,
+        "y": 1574.9954
+    },
+    "message": "es  mensaje"
+}
